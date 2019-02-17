@@ -1,2 +1,0 @@
-# aborigene
-react-native-app
