@@ -4,7 +4,8 @@ import { Provider } from "react-redux";
 import HomeScreen from "./screens/HomeScreen";
 
 const initialState = {
-  action: ""
+  action: "",
+  name: ""
 };
 
 const reducer = (state = initialState, action) => {
