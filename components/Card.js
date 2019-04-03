@@ -2,7 +2,7 @@ import React from "react";
 import style from "styled-components";
 
 const Card = props => (
-  <Container>
+  <Container style={{ elvation: 10 }}>
     <Cover>
       <Image source={props.image} />
       <Title>{props.title}</Title>
@@ -78,7 +78,6 @@ const Container = style.View`
   width: 315px;
   height: 280px;
   border-radius: 14px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px 10px;
   box-shadow: 0 5px 15px rgba(0,0,0, .15);
 `;

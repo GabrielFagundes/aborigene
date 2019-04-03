@@ -10,12 +10,12 @@ import {
 import style from "styled-components";
 import Card from "../components/Card";
 import Course from "../components/Course";
-import { Icon } from "expo";
 import { NotificationIcon } from "../components/Icons";
 import Logo from "../components/Logo";
 import Menu from "../components/Menu";
 import { connect } from "react-redux";
 import Avatar from "../components/Avatar";
+import { Platform } from "expo-core";
 
 function mapStateToProps(state) {
   return { action: state.action, name: state.name };
@@ -42,6 +42,8 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     StatusBar.setBarStyle("dark-content", true);
+
+    if (Platform.OS == "android") StatusBar.setBarStyle("light-content", true);
   }
 
   componentDidUpdate() {
@@ -145,6 +147,7 @@ class HomeScreen extends React.Component {
                 style={{ paddingBottom: 30 }}
                 showsHorizontalScrollIndicator={false}
               >
+              <CoursesContainer>
                 {courses.map((course, index) => (
                   <Course
                     key={index}
@@ -157,6 +160,7 @@ class HomeScreen extends React.Component {
                     caption={course.caption}
                   />
                 ))}
+                </CoursesContainer>
               </ScrollView>
             </ScrollView>
           </SafeAreaView>
@@ -171,10 +175,16 @@ export default connect(
   mapDispatchToProps
 )(HomeScreen);
 
+const CoursesContainer = style.View`
+ flexDirection: row;
+ flex-wrap: wrap;
+`
+
 const RootView = style.View`
   background: black;
   flex: 1;
 `;
+
 const Subtitle = style.Text`
   color: #b8bece;
   font-weight: 600;
